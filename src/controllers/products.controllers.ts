@@ -1,6 +1,9 @@
 import express from "express";
 import { Request, Response } from "express";
+import cloudinary from "../../cloudinary/cloudinary";
 import { PrismaClient } from "../generated/prisma/client";
+import fs from 'fs';
+import multer from 'multer';
 
 const prisma = new PrismaClient();
 
@@ -29,11 +32,31 @@ export const product_getById = async (req: Request, res: Response) => {
 export const product_post = async (req: Request, res: Response) => {
     const { name, price } = req.body;
 
+    if (!req.file) {
+        res.status(400).json({ message: "Image is required" })
+    }
+
+    const file = req.file!;
+    const result = await cloudinary.uploader.upload(file.path, {
+        transformation: [{
+            folder: 'Items',
+            resource_type: 'image'
+        },
+        {
+            crop: 'auto',
+            gravity: 'auto',
+        }
+        ]
+    });
+
+    const itemUrl = result.url
+
     try {
         const product = await prisma.products.create({
             data: {
                 name: name,
-                price: price
+                price: price,
+                itemUrl: itemUrl
             }
         });
 
@@ -55,8 +78,8 @@ export const product_put = async (req: Request, res: Response) => {
             data: updatedData,
         });
         res.status(200).json({ message: "Product Updated" })
-    } catch (error) {
-        res.status(500).json({ message: "server problem" })
+    } catch (err) {
+        res.status(500).json({ message: "Server error", details: err })
     }
 };
 
@@ -64,7 +87,7 @@ export const product_put = async (req: Request, res: Response) => {
 export const product_delete = async (req: Request, res: Response) => {
     const { id } = req.body;
     try {
-        await prisma.products.delete({
+        await prisma.products.deleteMany({
             where: { id }
         });
         res.status(200).json({ message: "Product deleted" });
