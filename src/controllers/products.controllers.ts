@@ -33,7 +33,7 @@ export const product_post = async (req: Request, res: Response) => {
     const { name, price } = req.body;
 
     if (!req.file) {
-        res.status(400).json({ message: "Image is required" })
+        return res.status(400).json({ message: "Image is required" })
     }
 
     const file = req.file!;
