@@ -4,6 +4,7 @@ import cloudinary from "../../cloudinary/cloudinary";
 import { PrismaClient } from "../generated/prisma/client";
 import fs from 'fs';
 import multer from 'multer';
+import { json } from "stream/consumers";
 
 const prisma = new PrismaClient();
 
@@ -29,11 +30,24 @@ export const product_getById = async (req: Request, res: Response) => {
     }
 
 };
+
+
 export const product_post = async (req: Request, res: Response) => {
     const { name, price } = req.body;
 
+    if ( !name || !price ) {
+        return res.status(400).json({ message:"Name and price are required"});
+    }
+    
+
+    const parsedPrice = parseInt(price, 10);
+    if (isNaN(parsedPrice)) {
+        return res.status(400).json({ message: "Price must be a valid number" });
+    }
+
+
     if (!req.file) {
-        return res.status(400).json({ message: "Image is required" })
+        return res.status(400).json({ message: "Image is required" });
     }
 
     const file = req.file!;
@@ -49,13 +63,13 @@ export const product_post = async (req: Request, res: Response) => {
         ]
     });
 
-    const itemUrl = result.url
+    const itemUrl = result.secure_url
 
     try {
         const product = await prisma.products.create({
             data: {
                 name: name,
-                price: price,
+                price: parsedPrice,
                 itemUrl: itemUrl
             }
         });
