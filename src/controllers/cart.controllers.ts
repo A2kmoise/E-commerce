@@ -20,13 +20,13 @@ try {
 export const cart_post = async (req: Request, res: Response) => {
     const { itemIds, ownerId } = req.body;
 
-    // Validate the inputs
+    
     if (!ownerId || !itemIds || !Array.isArray(itemIds) || itemIds.length === 0) {
         return res.status(400).json({ message: "Data is missing" });
     }
 
     try {
-        // Check if the products exist in the database
+        
         const items = await prisma.products.findMany({
             where: {
                 id: { in: itemIds },
@@ -37,7 +37,7 @@ export const cart_post = async (req: Request, res: Response) => {
             return res.status(400).json({ message: "Invalid request" });
         }
 
-        // Check if the user exists in the database
+        
         const userExist = await prisma.users.findUnique({
             where: {
                 id: ownerId,
@@ -48,7 +48,7 @@ export const cart_post = async (req: Request, res: Response) => {
             return res.status(400).json({ message: "Invalid user" });
         }
 
-        // Create a cart and order items
+      
         const cart = await prisma.cart.create({
             data: {
                 ownerId,
