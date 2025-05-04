@@ -81,7 +81,7 @@ export const product_post = async (req: Request, res: Response) => {
 };
 
 export const product_put = async (req: Request, res: Response) => {
-    const { id } = req.body
+    const { id } = req.body;
     try {
         const updatedData = {
             name: req.body.name,
