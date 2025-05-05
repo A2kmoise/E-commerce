@@ -4,6 +4,9 @@ import userRouter from './routes/user.routes';
 import productsRouter from './routes/products.routes';
 import ordersRouter from './routes/order.routes';
 import cartRouter from './routes/cart.routes';
+import swaggerDocument from '../swagger/swagger.json';
+import swaggerUi from 'swagger-ui-express';
+import swaggerJSdoc from 'swagger-jsdoc';
 
 dotenv.config();
 
@@ -19,6 +22,8 @@ app.use('/orders', ordersRouter);
 app.use('/cart', cartRouter);
 
 
+
+app.use ('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.listen(PORT, () => {
   console.log(`Server running at port : ${PORT}`);
 });
