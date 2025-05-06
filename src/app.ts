@@ -1,5 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+import otprouter from './routes/otp.routes';
 import userRouter from './routes/user.routes';
 import productsRouter from './routes/products.routes';
 import ordersRouter from './routes/order.routes';
@@ -13,9 +15,10 @@ dotenv.config();
 const PORT = process.env.PORT;
 const app = express();
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+app.use('/user/otp', otprouter);
 app.use('/users', userRouter);
 app.use('/products', productsRouter);
 app.use('/orders', ordersRouter);

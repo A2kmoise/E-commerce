@@ -1,7 +1,6 @@
 import express from "express";
 import { Request,Response } from "express";
 import { PrismaClient } from "../generated/prisma/client";
-import userRouter from "../routes/user.routes";
 import { create } from "domain";
 
 const prisma = new PrismaClient();
@@ -79,7 +78,7 @@ try {
      res.status(200).json({message: "Cart updated"});
 
 } catch (err) {
- res.status(500).json({message: "Server erro", details: err});  
+ res.status(500).json({message: "Server error", details: err});  
 }
 };
 

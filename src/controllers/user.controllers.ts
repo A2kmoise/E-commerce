@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import validator from 'validator';
-import { login } from "../model/user.model";
+import { login } from "../services/user.services";
 import { PrismaClient } from "../generated/prisma/client";
 
 const prisma = new PrismaClient
