@@ -1,3 +1,157 @@
 {
-    
+    "openapi": "3.0.0",
+    "info": {
+        "title": "E-commerce API",
+        "version": "1.0.0"
+    },
+    "routes": [
+        {
+            "method": "GET",
+            "path": "/users/signup",
+            "summary": "Get Signup Page",
+            "description": "Returns signup  form for new users.",
+            "requestBody": null,
+            "responses": {
+                "200": {
+                    "description": "Signup form loaded successfully.",
+                    "example": {
+                        "message": "Signup form loaded successfully."
+                    }
+                },
+                "404": {
+                    "description": "Signup page not found.",
+                    "example": {
+                        "error": "Signup page not found."
+                    }
+                }
+            }
+        },
+        {
+            "method": "GET",
+            "path": "/users/login",
+            "summary": "Get Login Page",
+            "description": "Returns login  a form for new users.",
+            "requestBody": null,
+            "responses": {
+                "200": {
+                    "description": "Login form loaded successfully.",
+                    "example": {
+                        "message": "Login form loaded successfully."
+                    }
+                },
+                "404": {
+                    "description": "Signup page not found.",
+                    "example": {
+                        "error": "Signup page not found."
+                    }
+                }
+            }
+        },
+        {
+            "method": "GET",
+            "path": "/users/logout",
+            "summary": "Get Logged out",
+            "description": "Makes a user logged out",
+            "requestBody": null,
+            "responses": {
+                "200": {
+                    "description": "Logged out successfully.",
+                    "example": {
+                        "message": "Logged out successfully."
+                    }
+                },
+                "404": {
+                    "description": "Loggout not found.",
+                    "example": {
+                        "error": "Logout not found."
+                    }
+                }
+            }
+        },
+        {
+            "method": "GET",
+            "path": "/products/",
+            "summary": "Get home page",
+            "description": "Returns a home page for all products",
+            "requestBody": null,
+            "responses": {
+              "200": {
+                "description": "Home page for all products",
+                "example": {
+                  "message": "Welcome on this E-commerce."
+                }
+              },
+              "404": {
+                "description": "Page not found.",
+                "example": {
+                  "error": "Page not found."
+                }
+              }
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/products/:id",
+            "summary": "Get a specific one product",
+            "description": "Returns a single product based on its id",
+            "requestBody": null,
+            "responses": {
+              "200": {
+                "description": "Single item loaded successfully.",
+                "example": {
+                  "message": "Single item loaded successfully."
+                }
+              },
+              "404": {
+                "description": "Item page not found.",
+                "example": {
+                  "error": "Item page not found."
+                }
+              }
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/orders",
+            "summary": "Get all orders for the current user.",
+            "description": "Returns orders page for a current.",
+            "requestBody": null,
+            "responses": {
+              "200": {
+                "description": "Order items got successfully.",
+                "example": {
+                  "message": "Order items got successfully."
+                }
+              },
+              "404": {
+                "description": "Order not found.",
+                "example": {
+                  "error": "Order not found."
+                }
+              }
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/cart",
+            "summary": "Get cart for the current user.",
+            "description": "Returns full cart for the current user.",
+            "requestBody": null,
+            "responses": {
+              "200": {
+                "description": "cart got successfully.",
+                "example": {
+                  "message": "cart got successfully."
+                }
+              },
+              "404": {
+                "description": "cart not found.",
+                "example": {
+                  "error": "cart not found."
+                }
+              }
+            }
+          }
+          
+    ]
 }
