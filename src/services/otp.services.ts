@@ -1,7 +1,10 @@
 import otpGenerator from 'otp-generator';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 import { PrismaClient } from '../generated/prisma/client';
 
+
+dotenv.config();
 const prisma = new PrismaClient();
 
 export const generateOtp = () => {
@@ -30,6 +33,7 @@ export const sendOtpEmail = async (email: string, otp: string) => {
       pass: process.env.EMAIL_PASS
     }
   });
+
 
   return await transporter.sendMail({
     from: process.env.EMAIL_USER,
