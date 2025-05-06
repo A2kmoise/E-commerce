@@ -24,13 +24,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Signup form loaded successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Signup form loaded successfully."}}}}}},
           "404": {
             "description": "Signup page not found.",
             "content": {
@@ -40,15 +34,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Signup page not found."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+                      "example": "Signup page not found."}}}}}}}},
       "post": {
         "operationId": "registerUser",
         "summary": "Register a new user",
@@ -80,13 +66,7 @@
                   },
                   "name": {
                     "type": "string",
-                    "example": "John Doe"
-                  }
-                }
-              }
-            }
-          }
-        },
+                    "example": "John Doe"}}}}}},
         "responses": {
           "201": {
             "description": "User registered successfully.",
@@ -97,13 +77,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Signup went successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Signup went successfully."}}}}}},
           "500": {
             "description": "Server error during signup.",
             "content": {
@@ -113,16 +87,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Signup failed."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+                      "example": "Signup failed."}}}}}}}}},
     "/users/login": {
       "get": {
         "operationId": "getLoginPage",
@@ -141,13 +106,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Login form loaded successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Login form loaded successfully."}}}}}},
           "404": {
             "description": "Login page not found.",
             "content": {
@@ -157,15 +116,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Login page not found."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+                      "example": "Login page not found."}}}}}}}},
       "post": {
         "operationId": "loginUser",
         "summary": "Login a user",
@@ -192,13 +143,7 @@
                   "password": {
                     "type": "string",
                     "format": "password",
-                    "example": "Password123!"
-                  }
-                }
-              }
-            }
-          }
-        },
+                    "example": "Password123!"}}}}}},
         "responses": {
           "200": {
             "description": "User logged in successfully.",
@@ -209,13 +154,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Login went successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Login went successfully."}}}}}},
           "500": {
             "description": "Server error or user not registered.",
             "content": {
@@ -225,16 +164,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Login failed."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+                      "example": "Login failed."}}}}}}}}},
     "/users/logout": {
       "get": {
         "operationId": "logoutUser",
@@ -253,13 +183,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Logged out successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Logged out successfully."}}}}}},
           "404": {
             "description": "Logout endpoint not found.",
             "content": {
@@ -269,16 +193,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Logout not found."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+                      "example": "Logout not found."}}}}}}}}},
     "/products": {
       "get": {
         "operationId": "getHomePage",
@@ -297,13 +212,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Welcome to this E-commerce."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Welcome to this E-commerce."}}}}}},
           "404": {
             "description": "Home page not found.",
             "content": {
@@ -313,16 +222,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Page not found."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+                      "example": "Page not found."}}}}}}}}},
     "/products/{id}": {
       "get": {
         "operationId": "getProductById",
@@ -352,13 +252,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Single item loaded successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Single item loaded successfully."}}}}}},
           "404": {
             "description": "Product not found.",
             "content": {
@@ -368,15 +262,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Item page not found."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+                      "example": "Item page not found."}}}}}}}},
       "put": {
         "operationId": "updateProduct",
         "summary": "Update a specific product",
@@ -413,13 +299,7 @@
                   },
                   "image": {
                     "type": "string",
-                    "example": "https://example.com/image.jpg"
-                  }
-                }
-              }
-            }
-          }
-        },
+                    "example": "https://example.com/image.jpg"}}}}}},
         "responses": {
           "200": {
             "description": "Product updated successfully.",
@@ -430,13 +310,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Updated successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Updated successfully."}}}}}},
           "500": {
             "description": "Server error during update.",
             "content": {
@@ -446,15 +320,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Update failed unexpectedly."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+                      "example": "Update failed unexpectedly."}}}}}}}},
       "delete": {
         "operationId": "deleteProduct",
         "summary": "Delete a specific product",
@@ -483,13 +349,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Deleted successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Deleted successfully."}}}}}},
           "500": {
             "description": "Server error during deletion.",
             "content": {
@@ -499,16 +359,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Deletion failed unexpectedly."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+                      "example": "Deletion failed unexpectedly."}}}}}}}}},
     "/products/upload": {
       "post": {
         "operationId": "uploadProduct",
@@ -540,13 +391,7 @@
                   },
                   "image": {
                     "type": "string",
-                    "example": "https://example.com/image.jpg"
-                  }
-                }
-              }
-            }
-          }
-        },
+                    "example": "https://example.com/image.jpg"}}}}}},
         "responses": {
           "201": {
             "description": "Product created successfully.",
@@ -557,13 +402,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "New item created successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "New item created successfully."}}}}}},
           "500": {
             "description": "Server error during upload.",
             "content": {
@@ -573,16 +412,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Upload failed."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+                      "example": "Upload failed."}}}}}}}}},
     "/orders": {
       "get": {
         "operationId": "getOrders",
@@ -601,13 +431,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Order items retrieved successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Order items retrieved successfully."}}}}}},
           "404": {
             "description": "Orders not found.",
             "content": {
@@ -617,15 +441,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Orders not found."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+                      "example": "Orders not found."}}}}}}}},
       "post": {
         "operationId": "createOrder",
         "summary": "Create a new order",
@@ -651,13 +467,7 @@
                     "example": [
                       "prod1",
                       "prod2"
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
+                    ]}}}}}},
         "responses": {
           "201": {
             "description": "Order created successfully.",
@@ -668,13 +478,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "New order created successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "New order created successfully."}}}}}},
           "500": {
             "description": "Server error during order creation.",
             "content": {
@@ -684,16 +488,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Order failed to be created."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+                      "example": "Order failed to be created."}}}}}}}}},
     "/cart": {
       "get": {
         "operationId": "getCart",
@@ -712,13 +507,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Cart retrieved successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Cart retrieved successfully."}}}}}},
           "404": {
             "description": "Cart not found.",
             "content": {
@@ -728,15 +517,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Cart not found."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+                      "example": "Cart not found."}}}}}}}},
       "poster's": {
         "operationId": "addToCart",
         "summary": "Add products to the cart",
@@ -761,13 +542,7 @@
                   },
                   "userId": {
                     "type": "string",
-                    "example": "user1"
-                  }
-                }
-              }
-            }
-          }
-        },
+                    "example": "user1"}}}}}},
         "responses": {
           "201": {
             "description": "Product added to cart successfully.",
@@ -778,13 +553,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Product added to cart successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Product added to cart successfully."}}}}}},
           "500": {
             "description": "Server error during cart update.",
             "content": {
@@ -794,16 +563,7 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Cart failed to be updated."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+                      "example": "Cart failed to be updated."}}}}}}}}},
     "/cart/{itemId}": {
       "put": {
         "operationId": "updateCartItem",
@@ -832,13 +592,7 @@
                 "properties": {
                   "quantity": {
                     "type": "integer",
-                    "example": 2
-                  }
-                }
-              }
-            }
-          }
-        },
+                    "example": 2}}}}}},
         "responses": {
           "200": {
             "description": "Cart item updated successfully.",
@@ -849,13 +603,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Updated successfully."
-                    }
-                  }
-                }
-              }
-            }
-          },
+                      "example": "Updated successfully."}}}}}},
           "500": {
             "description": "Server error during update.",
             "content": {
@@ -865,15 +613,4 @@
                   "properties": {
                     "error": {
                       "type": "string",
-                      "example": "Update failed unexpectedly."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+                      "example": "Update failed unexpectedly."}}}}}}}}}}}
