@@ -1,157 +1,879 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "title": "E-commerce API",
-        "version": "1.0.0"
-    },
-    "routes": [
-        {
-            "method": "GET",
-            "path": "/users/signup",
-            "summary": "Get Signup Page",
-            "description": "Returns signup  form for new users.",
-            "requestBody": null,
-            "responses": {
-                "200": {
-                    "description": "Signup form loaded successfully.",
-                    "example": {
-                        "message": "Signup form loaded successfully."
+  "openapi": "3.0.0",
+  "info": {
+    "title": "E-commerce API",
+    "version": "1.0.0",
+    "description": "API for managing users, products, orders, and carts in an e-commerce system."
+  },
+  "paths": {
+    "/users/signup": {
+      "get": {
+        "operationId": "getSignupPage",
+        "summary": "Get Signup Page",
+        "description": "Retrieves the signup form for new users to register in the e-commerce system. The form includes fields for email, password, and name.",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "Signup form loaded successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Signup form loaded successfully."
                     }
-                },
-                "404": {
-                    "description": "Signup page not found.",
-                    "example": {
-                        "error": "Signup page not found."
-                    }
-                }
-            }
-        },
-        {
-            "method": "GET",
-            "path": "/users/login",
-            "summary": "Get Login Page",
-            "description": "Returns login  a form for new users.",
-            "requestBody": null,
-            "responses": {
-                "200": {
-                    "description": "Login form loaded successfully.",
-                    "example": {
-                        "message": "Login form loaded successfully."
-                    }
-                },
-                "404": {
-                    "description": "Signup page not found.",
-                    "example": {
-                        "error": "Signup page not found."
-                    }
-                }
-            }
-        },
-        {
-            "method": "GET",
-            "path": "/users/logout",
-            "summary": "Get Logged out",
-            "description": "Makes a user logged out",
-            "requestBody": null,
-            "responses": {
-                "200": {
-                    "description": "Logged out successfully.",
-                    "example": {
-                        "message": "Logged out successfully."
-                    }
-                },
-                "404": {
-                    "description": "Loggout not found.",
-                    "example": {
-                        "error": "Logout not found."
-                    }
-                }
-            }
-        },
-        {
-            "method": "GET",
-            "path": "/products/",
-            "summary": "Get home page",
-            "description": "Returns a home page for all products",
-            "requestBody": null,
-            "responses": {
-              "200": {
-                "description": "Home page for all products",
-                "example": {
-                  "message": "Welcome on this E-commerce."
-                }
-              },
-              "404": {
-                "description": "Page not found.",
-                "example": {
-                  "error": "Page not found."
+                  }
                 }
               }
             }
           },
-          {
-            "method": "GET",
-            "path": "/products/:id",
-            "summary": "Get a specific one product",
-            "description": "Returns a single product based on its id",
-            "requestBody": null,
-            "responses": {
-              "200": {
-                "description": "Single item loaded successfully.",
-                "example": {
-                  "message": "Single item loaded successfully."
-                }
-              },
-              "404": {
-                "description": "Item page not found.",
-                "example": {
-                  "error": "Item page not found."
-                }
-              }
-            }
-          },
-          {
-            "method": "GET",
-            "path": "/orders",
-            "summary": "Get all orders for the current user.",
-            "description": "Returns orders page for a current.",
-            "requestBody": null,
-            "responses": {
-              "200": {
-                "description": "Order items got successfully.",
-                "example": {
-                  "message": "Order items got successfully."
-                }
-              },
-              "404": {
-                "description": "Order not found.",
-                "example": {
-                  "error": "Order not found."
-                }
-              }
-            }
-          },
-          {
-            "method": "GET",
-            "path": "/cart",
-            "summary": "Get cart for the current user.",
-            "description": "Returns full cart for the current user.",
-            "requestBody": null,
-            "responses": {
-              "200": {
-                "description": "cart got successfully.",
-                "example": {
-                  "message": "cart got successfully."
-                }
-              },
-              "404": {
-                "description": "cart not found.",
-                "example": {
-                  "error": "cart not found."
+          "404": {
+            "description": "Signup page not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Signup page not found."
+                    }
+                  }
                 }
               }
             }
           }
-          
-    ]
+        }
+      },
+      "post": {
+        "operationId": "registerUser",
+        "summary": "Register a new user",
+        "description": "Creates a new user account in the e-commerce system by accepting user details such as email, password, and name. Upon successful registration, the user can log in and access the platform.",
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password",
+                  "name"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "user@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "Password123!"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "John Doe"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User registered successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Signup went successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error during signup.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Signup failed."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "get": {
+        "operationId": "getLoginPage",
+        "summary": "Get Login Page",
+        "description": "Retrieves the login form for existing users to authenticate and access their e-commerce account. The form includes fields for email and password.",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "Login form loaded successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Login form loaded successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Login page not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Login page not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "loginUser",
+        "summary": "Login a user",
+        "description": "Authenticates a user by verifying their email and password against the system’s database. Upon successful login, the user is granted access to their account and related features like cart and orders.",
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "user@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "Password123!"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User logged in successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Login went successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error or user not registered.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Login failed."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/logout": {
+      "get": {
+        "operationId": "logoutUser",
+        "summary": "Log out a user",
+        "description": "Terminates the current user’s session, logging them out of the e-commerce system and ensuring secure disconnection from their account.",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "Logged out successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Logged out successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Logout endpoint not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Logout not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "operationId": "getHomePage",
+        "summary": "Get home page",
+        "description": "Displays the e-commerce home page, showcasing a list of all available products for users to browse and select from.",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "Home page for all products loaded successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Welcome to this E-commerce."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Home page not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Page not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "operationId": "getProductById",
+        "summary": "Get a specific product",
+        "description": "Retrieves detailed information about a single product identified by its unique ID, including name, price, and image, for viewing or purchase.",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The unique identifier of the product to retrieve."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product loaded successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Single item loaded successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Item page not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateProduct",
+        "summary": "Update a specific product",
+        "description": "Modifies the details of an existing product, such as its name, price, or image, identified by its unique ID. Typically used by administrators or authorized users.",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The unique identifier of the product to update."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Updated Product Name"
+                  },
+                  "price": {
+                    "type": "number",
+                    "format": "float",
+                    "example": 29.99
+                  },
+                  "image": {
+                    "type": "string",
+                    "example": "https://example.com/image.jpg"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Updated successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error during update.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Update failed unexpectedly."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteProduct",
+        "summary": "Delete a specific product",
+        "description": "Removes a product from the e-commerce system using its unique ID. This action is typically restricted to administrators or authorized users.",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The unique identifier of the product to delete."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product deleted successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Deleted successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error during deletion.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Deletion failed unexpectedly."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/upload": {
+      "post": {
+        "operationId": "uploadProduct",
+        "summary": "Upload a new product",
+        "description": "Adds a new product to the e-commerce system by providing its name, price, and image URL. This endpoint is typically used by administrators or sellers to expand the product catalog.",
+        "tags": [
+          "Products"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "price",
+                  "image"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "New Product"
+                  },
+                  "price": {
+                    "type": "number",
+                    "format": "float",
+                    "example": 19.99
+                  },
+                  "image": {
+                    "type": "string",
+                    "example": "https://example.com/image.jpg"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Product created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "New item created successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error during upload.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Upload failed."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "operationId": "getOrders",
+        "summary": "Get all orders for the current user",
+        "description": "Retrieves a list of all orders placed by the currently authenticated user, including details such as order IDs and associated products.",
+        "tags": [
+          "Orders"
+        ],
+        "responses": {
+          "200": {
+            "description": "Orders retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Order items retrieved successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Orders not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Orders not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createOrder",
+        "summary": "Create a new order",
+        "description": "Places a new order for the currently authenticated user by specifying one or more product IDs. The order is recorded in the system for processing and fulfillment.",
+        "tags": [
+          "Orders"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "productIds"
+                ],
+                "properties": {
+                  "productIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "prod1",
+                      "prod2"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Order created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "New order created successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error during order creation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Order failed to be created."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cart": {
+      "get": {
+        "operationId": "getCart",
+        "summary": "Get cart for the current user",
+        "description": "Retrieves the current authenticated user’s shopping cart, displaying all products added, including their quantities and details.",
+        "tags": [
+          "Cart"
+        ],
+        "responses": {
+          "200": {
+            "description": "Cart retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Cart retrieved successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cart not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Cart not found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "poster's": {
+        "operationId": "addToCart",
+        "summary": "Add products to the cart",
+        "description": "Adds a product to the shopping cart of the currently authenticated user by specifying the product ID and user ID. This allows users to collect items before placing an order.",
+        "tags": [
+          "Cart"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "productId",
+                  "userId"
+                ],
+                "properties": {
+                  "productId": {
+                    "type": "string",
+                    "example": "prod1"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "example": "user1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Product added to cart successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Product added to cart successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error during cart update.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Cart failed to be updated."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cart/{itemId}": {
+      "put": {
+        "operationId": "updateCartItem",
+        "summary": "Update a specific item in the cart",
+        "description": "Updates the details of a specific item in the user’s shopping cart, such as quantity, identified by the item’s unique ID. This allows users to adjust their cart contents.",
+        "tags": [
+          "Cart"
+        ],
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The unique identifier of the item in the cart to update."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "quantity": {
+                    "type": "integer",
+                    "example": 2
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cart item updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Updated successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error during update.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Update failed unexpectedly."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
