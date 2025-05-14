@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import otprouter from './routes/otp.routes';
+import smsRouter from './routes/sms.routes';
 import userRouter from './routes/user.routes';
 import productsRouter from './routes/products.routes';
 import ordersRouter from './routes/order.routes';
@@ -18,6 +19,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+app.use('/user/sms', smsRouter);
 app.use('/user/otp', otprouter);
 app.use('/users', userRouter);
 app.use('/products', productsRouter);
