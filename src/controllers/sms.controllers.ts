@@ -12,5 +12,9 @@ export const send_sms = async ( req:Request, res:Response) => {
 };
 
 export const verify_sms = ( req:Request, res:Response) => {
-res.send('Sms verified');
+try {
+  
+} catch (error) {
+  
+}
 }
