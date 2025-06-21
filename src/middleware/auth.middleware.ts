@@ -1,7 +1,7 @@
 import express, { NextFunction } from "express";
 import jwt, { JsonWebTokenError, Jwt, JwtPayload } from 'jsonwebtoken';
 import { Response, Request } from "express";
-
+import cookieParser from "cookie-parser";
 
 
 export const requireAuth = (
@@ -22,6 +22,6 @@ export const requireAuth = (
             };
         });
     } else {
-        res.redirect('/users/login');
+        res.status(401).json({message:"Unauthorised"});
     }
 }

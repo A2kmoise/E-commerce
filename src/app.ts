@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import otprouter from './routes/otp.routes';
 import smsRouter from './routes/sms.routes';
 import userRouter from './routes/user.routes';
@@ -18,6 +19,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser())
 
 
 app.use('/user/sms', smsRouter);
